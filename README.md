@@ -5,7 +5,7 @@ by Matt "hey that rhymes" Barker
 While extending the functionality of this project beyond CU4999, strange bugs and console errors and crashes occur, with more popping up after I fix them. Concisely, shit happens. If while running / building in the simulator, the app crashes, please try rebuilding and running again. Inexplicably, after doing this once (sometimes twice), the app should remain stable. 
 
 ## Features
-- open articles (if available) in Reader view
+- open articles in optimized Reader view, if available
 	- advanced browser functionality (iOS 9 SVC) with seamless sharing capabilities
 	- swipe back from edge of screen
 - add feeds via URL (three default websites provided)
