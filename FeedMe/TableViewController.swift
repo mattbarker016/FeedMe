@@ -70,6 +70,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
                         self.getDataFromUrl(articles.imagesFromItemDescription[0], completion: { (data, response, error) -> Void in
                             if error == nil {
                                 articles.picture = UIImage(data: data!)
+                                self.tableView.reloadData()
                             }
                         })
                     }
@@ -101,8 +102,9 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
                     articles.feedName = self.customTitle //sets custom/regular title to feedName if exists
                     if articles.imagesFromItemDescription != [] {
                         self.getDataFromUrl(articles.imagesFromItemDescription[0], completion: { (data, response, error) -> Void in
-                            if error == nil && data != nil {
+                            if error == nil {
                                 articles.picture = UIImage(data: data!)
+                                self.tableView.reloadData()
                             }
                         })
                     }

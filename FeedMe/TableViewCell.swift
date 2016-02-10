@@ -30,25 +30,32 @@ class TableViewCell: UITableViewCell {
     
     func setArticle(article: RSSItem!){
         
-        headline.text = stringParser(article.title!)
-        preview.text = stringParser(article.itemDescription!)
+        dispatch_async(dispatch_get_main_queue(), {
+            self.headline.text = self.stringParser(article.title!)
+            self.preview.text = self.stringParser(article.itemDescription!)
+        })
         
         //load article image; if it exists, display it (stored in RSSFeed class)
-        if article.picture == nil {
-                picView.image = article.picture
-        }
+        dispatch_async(dispatch_get_main_queue(), {
+            if article.picture == nil {
+                self.picView.image = article.picture
+            }
+        })
         
         //load picture if there is one, otherwise "delete" picture view
-        if article.picture != nil {
+        dispatch_async(dispatch_get_main_queue(), {
+            if article.picture != nil {
                 self.leadingSpace.constant = 8
                 self.width.constant = 115
-                picView.contentMode = .ScaleAspectFit
-                picView.image = article.picture
-        }
-        else {
-            self.leadingSpace.constant = 0
-            self.width.constant = 0
-        }
+                self.picView.contentMode = .ScaleAspectFit
+                self.picView.image = article.picture
+            
+            }
+            else {
+                self.leadingSpace.constant = 0
+                self.width.constant = 0
+            }
+        })
         
         feedName.text = article.feedName
         
@@ -80,6 +87,7 @@ class TableViewCell: UITableViewCell {
         }
         
         //remove occasional codes in strings that aren't parsed by RSSParser
+        string = string.stringByReplacingOccurrencesOfString("&#039;", withString: "'")
         string = string.stringByReplacingOccurrencesOfString("&amp;", withString: "&")
         string = string.stringByReplacingOccurrencesOfString("&ldquo;", withString: "\"")
         string = string.stringByReplacingOccurrencesOfString("&rdquo;", withString: "\"")
