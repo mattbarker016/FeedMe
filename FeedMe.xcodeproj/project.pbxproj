@@ -7,21 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BFF8B0711C0D338100E55A6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0701C0D338100E55A6D /* AppDelegate.swift */; };
-		BFF8B0731C0D338100E55A6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0721C0D338100E55A6D /* ViewController.swift */; };
-		BFF8B0761C0D338100E55A6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF8B0741C0D338100E55A6D /* Main.storyboard */; };
 		BFF8B0781C0D338100E55A6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFF8B0771C0D338100E55A6D /* Assets.xcassets */; };
-		BFF8B07B1C0D338100E55A6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF8B0791C0D338100E55A6D /* LaunchScreen.storyboard */; };
+		BFF8B0831C0D33B000E55A6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF8B0821C0D33B000E55A6D /* LaunchScreen.storyboard */; };
+		BFF8B0851C0D33B700E55A6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF8B0841C0D33B700E55A6D /* Main.storyboard */; };
+		BFF8B0871C0D33CC00E55A6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0861C0D33CC00E55A6D /* AppDelegate.swift */; };
+		BFF8B0901C0D33E800E55A6D /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B08B1C0D33E800E55A6D /* FeedViewCell.swift */; };
+		BFF8B0911C0D33E800E55A6D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B08C1C0D33E800E55A6D /* FeedViewController.swift */; };
+		BFF8B0921C0D33E800E55A6D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B08D1C0D33E800E55A6D /* TableViewCell.swift */; };
+		BFF8B0931C0D33E900E55A6D /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B08E1C0D33E800E55A6D /* TableViewController.swift */; };
+		BFF8B0991C0D34B700E55A6D /* NSDate+dateFromInternetDateTimeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0941C0D34B700E55A6D /* NSDate+dateFromInternetDateTimeString.swift */; };
+		BFF8B09A1C0D34B700E55A6D /* RSSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0951C0D34B700E55A6D /* RSSFeed.swift */; };
+		BFF8B09B1C0D34B700E55A6D /* RSSItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0961C0D34B700E55A6D /* RSSItem.swift */; };
+		BFF8B09C1C0D34B700E55A6D /* RSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0971C0D34B700E55A6D /* RSSParser.swift */; };
+		BFF8B09D1C0D34B700E55A6D /* String+imageLinksFromHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0981C0D34B700E55A6D /* String+imageLinksFromHTML.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BFF8B06D1C0D338100E55A6D /* FeedMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFF8B0701C0D338100E55A6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BFF8B0721C0D338100E55A6D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BFF8B0751C0D338100E55A6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFF8B0771C0D338100E55A6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BFF8B07A1C0D338100E55A6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		BFF8B07C1C0D338100E55A6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFF8B0821C0D33B000E55A6D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BFF8B0841C0D33B700E55A6D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BFF8B0861C0D33CC00E55A6D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BFF8B0881C0D33E000E55A6D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFF8B08B1C0D33E800E55A6D /* FeedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
+		BFF8B08C1C0D33E800E55A6D /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		BFF8B08D1C0D33E800E55A6D /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		BFF8B08E1C0D33E800E55A6D /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		BFF8B0941C0D34B700E55A6D /* NSDate+dateFromInternetDateTimeString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+dateFromInternetDateTimeString.swift"; sourceTree = "<group>"; };
+		BFF8B0951C0D34B700E55A6D /* RSSFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSFeed.swift; sourceTree = "<group>"; };
+		BFF8B0961C0D34B700E55A6D /* RSSItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSItem.swift; sourceTree = "<group>"; };
+		BFF8B0971C0D34B700E55A6D /* RSSParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSParser.swift; sourceTree = "<group>"; };
+		BFF8B0981C0D34B700E55A6D /* String+imageLinksFromHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+imageLinksFromHTML.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +70,20 @@
 		BFF8B06F1C0D338100E55A6D /* FeedMe */ = {
 			isa = PBXGroup;
 			children = (
-				BFF8B0701C0D338100E55A6D /* AppDelegate.swift */,
-				BFF8B0721C0D338100E55A6D /* ViewController.swift */,
-				BFF8B0741C0D338100E55A6D /* Main.storyboard */,
+				BFF8B0861C0D33CC00E55A6D /* AppDelegate.swift */,
+				BFF8B0841C0D33B700E55A6D /* Main.storyboard */,
+				BFF8B08E1C0D33E800E55A6D /* TableViewController.swift */,
+				BFF8B08D1C0D33E800E55A6D /* TableViewCell.swift */,
+				BFF8B08C1C0D33E800E55A6D /* FeedViewController.swift */,
+				BFF8B08B1C0D33E800E55A6D /* FeedViewCell.swift */,
 				BFF8B0771C0D338100E55A6D /* Assets.xcassets */,
-				BFF8B0791C0D338100E55A6D /* LaunchScreen.storyboard */,
-				BFF8B07C1C0D338100E55A6D /* Info.plist */,
+				BFF8B0821C0D33B000E55A6D /* LaunchScreen.storyboard */,
+				BFF8B0941C0D34B700E55A6D /* NSDate+dateFromInternetDateTimeString.swift */,
+				BFF8B0951C0D34B700E55A6D /* RSSFeed.swift */,
+				BFF8B0961C0D34B700E55A6D /* RSSItem.swift */,
+				BFF8B0971C0D34B700E55A6D /* RSSParser.swift */,
+				BFF8B0981C0D34B700E55A6D /* String+imageLinksFromHTML.swift */,
+				BFF8B0881C0D33E000E55A6D /* Info.plist */,
 			);
 			path = FeedMe;
 			sourceTree = "<group>";
@@ -123,9 +147,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFF8B07B1C0D338100E55A6D /* LaunchScreen.storyboard in Resources */,
+				BFF8B0851C0D33B700E55A6D /* Main.storyboard in Resources */,
 				BFF8B0781C0D338100E55A6D /* Assets.xcassets in Resources */,
-				BFF8B0761C0D338100E55A6D /* Main.storyboard in Resources */,
+				BFF8B0831C0D33B000E55A6D /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,31 +160,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFF8B0731C0D338100E55A6D /* ViewController.swift in Sources */,
-				BFF8B0711C0D338100E55A6D /* AppDelegate.swift in Sources */,
+				BFF8B09B1C0D34B700E55A6D /* RSSItem.swift in Sources */,
+				BFF8B0921C0D33E800E55A6D /* TableViewCell.swift in Sources */,
+				BFF8B0931C0D33E900E55A6D /* TableViewController.swift in Sources */,
+				BFF8B0991C0D34B700E55A6D /* NSDate+dateFromInternetDateTimeString.swift in Sources */,
+				BFF8B0871C0D33CC00E55A6D /* AppDelegate.swift in Sources */,
+				BFF8B09A1C0D34B700E55A6D /* RSSFeed.swift in Sources */,
+				BFF8B0911C0D33E800E55A6D /* FeedViewController.swift in Sources */,
+				BFF8B09D1C0D34B700E55A6D /* String+imageLinksFromHTML.swift in Sources */,
+				BFF8B0901C0D33E800E55A6D /* FeedViewCell.swift in Sources */,
+				BFF8B09C1C0D34B700E55A6D /* RSSParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		BFF8B0741C0D338100E55A6D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BFF8B0751C0D338100E55A6D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		BFF8B0791C0D338100E55A6D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BFF8B07A1C0D338100E55A6D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BFF8B07D1C0D338100E55A6D /* Debug */ = {
@@ -251,6 +264,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FeedMe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Paft-Dunk.FeedMe";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -262,6 +276,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FeedMe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Paft-Dunk.FeedMe";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -287,6 +302,7 @@
 				BFF8B0811C0D338100E55A6D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  FeedMe
 //
-//  Created by Matthew Barker on 11/30/15.
+//  Created by Matt Barker on 11/23/15.
 //  Copyright © 2015 Matt Barker. All rights reserved.
 //
 
