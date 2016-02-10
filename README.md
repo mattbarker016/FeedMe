@@ -1,5 +1,5 @@
-# FeedMe README 
-by Matt "hey that rhymes" Barker
+# FeedMe
+by Matt Barker
 
 ## In case of issues...
 While extending the functionality of this project beyond CU4999, strange bugs and console errors and crashes occur, with more popping up after I fix them. Concisely, shit happens. If while running / building in the simulator, the app crashes, please try rebuilding and running again. Inexplicably, after doing this once (sometimes twice), the app should remain stable. 
