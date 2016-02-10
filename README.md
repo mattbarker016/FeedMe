@@ -40,10 +40,13 @@ by Matt Barker
 - anticipating / handling more feed types
 
 ## Credits
-### Code/Design: Matt Barker
-### SwiftRSS Parser: pristap forked from AlexChesters (w/ some small personal mods)
-### Icon: Matt Barker
-### Outside Help: 
+Code/Design: Matt Barker
+
+SwiftRSS Parser: pristap forked from AlexChesters (w/ some small personal mods)
+
+Icon: Matt Barker
+
+Outside Help: 
 - Lucas Derraugh (layouts, delegates)
 - Austin Astorga (background threads)
 - StackOverflow (so many things, so many)
