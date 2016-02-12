@@ -31,7 +31,6 @@ Now on to the good stuff...
 - LaunchScreen included
 
 ## Known Issues
-- upon first load, visible table cells don't show picture (refresh or scroll down and up)
 - refreshing will make all articles unread
 - layout complaints because of UIAlertController / autolayout
 - depreciated function in Swift RSS Parser
