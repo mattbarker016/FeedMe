@@ -27,6 +27,7 @@ A Simple Swift RSS Feed Reader – CUAppDev Developer Training Program Final Pro
 
 ## Known Issues
 - unwanted graphics during refreshing
+- delete feed is buggy
 - refreshing will make all articles unread
 - layout complaints because of UIAlertController
 - depreciated function in Swift RSS Parser
