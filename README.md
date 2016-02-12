@@ -2,11 +2,6 @@
 
 A Simple Swift RSS Feed Reader – CUAppDev Developer Training Program Final Project
 
-## First off...
-While extending the functionality of this project beyond CU4999, strange bugs and console errors and crashes occur, with more popping up after I fix them. Concisely, shit happens. If while running / building in the simulator, the app crashes, please try rebuilding and running again. Inexplicably, after doing this once (sometimes twice), the app should remain stable. 
-
-Now on to the good stuff...
-
 ## Features
 - open articles in optimized Reader view, if available
 	- advanced browser functionality (iOS 9 SVC) with seamless sharing capabilities
@@ -31,8 +26,9 @@ Now on to the good stuff...
 - LaunchScreen included
 
 ## Known Issues
+- unwanted graphics during refreshing
 - refreshing will make all articles unread
-- layout complaints because of UIAlertController / autolayout
+- layout complaints because of UIAlertController
 - depreciated function in Swift RSS Parser
 
 ## Roadmap (if pursued)
