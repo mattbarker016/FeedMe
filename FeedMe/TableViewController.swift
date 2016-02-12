@@ -77,9 +77,9 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
                         })
                     }
                     self.itemArray.append(articles)
+                    self.tableView.reloadData()
                 }
                 self.itemArray.sortInPlace { $0.pubDate!.compare($1.pubDate!) == .OrderedDescending }
-                self.tableView.reloadData()
                 }
             })
         }

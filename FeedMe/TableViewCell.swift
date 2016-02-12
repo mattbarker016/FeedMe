@@ -88,6 +88,7 @@ class TableViewCell: UITableViewCell {
         
         //remove occasional codes in strings that aren't parsed by RSSParser
         string = string.stringByReplacingOccurrencesOfString("&#039;", withString: "'")
+        string = string.stringByReplacingOccurrencesOfString("&quot;", withString: "\"")
         string = string.stringByReplacingOccurrencesOfString("&amp;", withString: "&")
         string = string.stringByReplacingOccurrencesOfString("&ldquo;", withString: "\"")
         string = string.stringByReplacingOccurrencesOfString("&rdquo;", withString: "\"")
