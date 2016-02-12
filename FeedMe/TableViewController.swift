@@ -70,7 +70,9 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
                         self.getDataFromUrl(articles.imagesFromItemDescription[0], completion: { (data, response, error) -> Void in
                             if error == nil {
                                 articles.picture = UIImage(data: data!)
-                                self.tableView.reloadData()
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    self.tableView.reloadData()
+                                })
                             }
                         })
                     }
@@ -104,7 +106,9 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
                         self.getDataFromUrl(articles.imagesFromItemDescription[0], completion: { (data, response, error) -> Void in
                             if error == nil {
                                 articles.picture = UIImage(data: data!)
-                                self.tableView.reloadData()
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    self.tableView.reloadData()
+                                })
                             }
                         })
                     }
@@ -149,6 +153,10 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
             destination.feedArrayInFeedView = feedArray
             }
         }
+    
+    func reload() {
+        self.tableView.reloadData()
+    }
     
     //initalize slideover options / mark as read, incomplete
     
