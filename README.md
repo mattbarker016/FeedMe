@@ -42,13 +42,14 @@ A Simple Swift RSS Feed Reader – CUAppDev Developer Training Program Final Pro
 - anticipating / handling more feed types
 
 ## Credits
-######Code/Design: Matt Barker
 
-###### SwiftRSS Parser: pristap forked from AlexChesters (w/ some small personal mods)
+Code/Design: Matt Barker
 
-###### Icon: Matt Barker
+SwiftRSS Parser: @pristap forked from @AlexChesters (w/ some small personal mods)
 
-###### Outside Help: 
+Icon: Matt Barker
+
+Outside Help: 
 - Lucas Derraugh (layouts, delegates)
 - Austin Astorga (background threads)
 - StackOverflow (so many things, so many)
