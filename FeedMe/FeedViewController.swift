@@ -9,7 +9,8 @@
 import UIKit
 import SafariServices
 
-class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, SFSafariViewControllerDelegate, UITextFieldDelegate {
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate,
+                            SFSafariViewControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var newFeedTextField: UITextField!
     @IBOutlet weak var feedStatus: UILabel!
@@ -24,8 +25,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.newFeedTextField.delegate = self
         
+        self.newFeedTextField.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -60,7 +61,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //remove feed from feedList
         let delete = UITableViewRowAction(style: .Normal, title: "Delete") { action, index in
+            
             self.feedArrayInFeedView.removeAtIndex(indexPath.row)
+            //prepareForSegue transfer more stable?
             self.delegate?.didChangeFeedArray(self.feedArrayInFeedView)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             self.feedStatus.hidden = false

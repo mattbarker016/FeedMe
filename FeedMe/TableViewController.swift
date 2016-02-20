@@ -31,12 +31,20 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
         self.tableView.reloadData()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        var x = 0
+        for feed in feedArray {
+            print("feed #\(x): \(feed.title!)")
+            x += 1
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
         initGetStuff()
         
-        //intialize refresh
+        //intialize pull to refresh
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(refreshControl)
@@ -54,10 +62,10 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
         super.didReceiveMemoryWarning()
     }
     
-    //special initial getStuff() function to transder addressArray starter sites to feedArray
+    //special initial getStuff() function to transfer addressArray starter sites to feedArray
     func initGetStuff() {
         
-        //get articles from each feed, place in general array, sort by date
+        //get articles from each feed, place in general array, sort by date, load images if possible
         for address in self.addressArray {
             let request: NSURLRequest = NSURLRequest(URL: address)
             RSSParser.parseFeedForRequest(request, callback: { (feed, error) in
@@ -94,7 +102,6 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     
     //parse all feeds in feedArray, and add them to itemArray for display
     func getStuff() {
-        
         itemArray.removeAll() //remove exisitng items so there are no duplicates
         for eachFeed in self.feedArray {
             RSSParser.parseFeedForRequest(NSURLRequest(URL: eachFeed.rawLink!), callback: { (feed, error) in
@@ -125,14 +132,11 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
     }
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Article") as! TableViewCell
         cell.setArticle(itemArray[indexPath.row])
         return cell
     }
-    
-    
     
     //open link in SVC, fade article
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -157,6 +161,8 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     func reload() {
         self.tableView.reloadData()
     }
+    
+    //CODE IN PROGRESS
     
     //initalize slideover options / mark as read, incomplete
     

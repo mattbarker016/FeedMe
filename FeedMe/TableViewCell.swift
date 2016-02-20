@@ -30,6 +30,7 @@ class TableViewCell: UITableViewCell {
     
     func setArticle(article: RSSItem!){
         
+        //set headline and preview
         dispatch_async(dispatch_get_main_queue(), {
             self.headline.text = self.stringParser(article.title!)
             self.preview.text = self.stringParser(article.itemDescription!)
@@ -78,7 +79,6 @@ class TableViewCell: UITableViewCell {
         //remove anything in-between < and >
         while string.containsString("<") && string.containsString(">") {
             let range = string.rangeOfString("<")!.maxElement()!..<string.rangeOfString(">")!.minElement()!.advancedBy(1)
-            //let range = Range<String.Index>(start: string.rangeOfString("<")!.maxElement()!, end: string.rangeOfString(">")!.minElement()!.advancedBy(1))
             string.removeRange(range)
         }
         //remove potential space at start of preview
