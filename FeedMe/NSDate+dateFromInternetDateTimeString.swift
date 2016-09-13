@@ -15,99 +15,99 @@
 
 import UIKit
 
-extension NSDate {
+extension Date {
     
-    class var internetDateFormatter : NSDateFormatter {
+    static var internetDateFormatter : DateFormatter {
     struct Static {
-        static let instance: NSDateFormatter = {
-            let dateFormatter = NSDateFormatter()
-            let locale: NSLocale = NSLocale(localeIdentifier: "en_US_POSIX")
+        static let instance: DateFormatter = {
+            let dateFormatter = DateFormatter()
+            let locale: Locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.locale = locale
-            dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
             return dateFormatter
             }()
         }
         return Static.instance
     }
     
-    class func dateFromInternetDateTimeString(dateString: String!) -> NSDate?
+    static func dateFromInternetDateTimeString(_ dateString: String!) -> Date?
     {
-        var date: NSDate? = nil
+        var date: Date? = nil
         
-        date = NSDate.dateFromRFC822String(dateString)
+        date = Date.dateFromRFC822String(dateString)
         
         if date == nil
         {
-            date = NSDate.dateFromRFC3339String(dateString)
+            date = Date.dateFromRFC3339String(dateString)
         }
         
         return date
     }
     
-    class func dateFromRFC822String(dateString: String!) -> NSDate?
+    static func dateFromRFC822String(_ dateString: String!) -> Date?
     {
-        var date: NSDate? = nil
+        var date: Date? = nil
         
-        let rfc822_string: NSString = dateString.uppercaseString
+        let rfc822_string: NSString = dateString.uppercased() as NSString
         
-        if rfc822_string.rangeOfString(",").location != NSNotFound
+        if rfc822_string.range(of: ",").location != NSNotFound
         {
             if date == nil
             {
-                NSDate.internetDateFormatter.dateFormat = "EEE, d MMM yyyy HH:mm:ss zzz"
+                Date.internetDateFormatter.dateFormat = "EEE, d MMM yyyy HH:mm:ss zzz"
                 
-                date = NSDate.internetDateFormatter.dateFromString(rfc822_string as String)
+                date = Date.internetDateFormatter.date(from: rfc822_string as String)
             }
             
             if date == nil
             {
-                NSDate.internetDateFormatter.dateFormat = "EEE, d MMM yyyy HH:mm zzz"
+                Date.internetDateFormatter.dateFormat = "EEE, d MMM yyyy HH:mm zzz"
                 
-                date = NSDate.internetDateFormatter.dateFromString(rfc822_string as String)
+                date = Date.internetDateFormatter.date(from: rfc822_string as String)
             }
             
             if date == nil
             {
-                NSDate.internetDateFormatter.dateFormat = "EEE, d MMM yyyy HH:mm:ss"
+                Date.internetDateFormatter.dateFormat = "EEE, d MMM yyyy HH:mm:ss"
 
-                date = NSDate.internetDateFormatter.dateFromString(rfc822_string as String)
+                date = Date.internetDateFormatter.date(from: rfc822_string as String)
             }
             
             if date == nil
             {
-                NSDate.internetDateFormatter.dateFormat = "EEE, d MMM yyyy HH:mm"
+                Date.internetDateFormatter.dateFormat = "EEE, d MMM yyyy HH:mm"
                 
-                date = NSDate.internetDateFormatter.dateFromString(rfc822_string as String)
+                date = Date.internetDateFormatter.date(from: rfc822_string as String)
             }
         }
         else
         {
             if date == nil
             {
-                NSDate.internetDateFormatter.dateFormat = "d MMM yyyy HH:mm:ss zzz"
+                Date.internetDateFormatter.dateFormat = "d MMM yyyy HH:mm:ss zzz"
                 
-                date = NSDate.internetDateFormatter.dateFromString(rfc822_string as String)
+                date = Date.internetDateFormatter.date(from: rfc822_string as String)
             }
             
             if date == nil
             {
-                NSDate.internetDateFormatter.dateFormat = "d MMM yyyy HH:mm zzz"
+                Date.internetDateFormatter.dateFormat = "d MMM yyyy HH:mm zzz"
                                 
-                date = NSDate.internetDateFormatter.dateFromString(rfc822_string as String)
+                date = Date.internetDateFormatter.date(from: rfc822_string as String)
             }
             
             if date == nil
             {
-                NSDate.internetDateFormatter.dateFormat = "d MMM yyyy HH:mm:ss"
+                Date.internetDateFormatter.dateFormat = "d MMM yyyy HH:mm:ss"
                 
-                date = NSDate.internetDateFormatter.dateFromString(rfc822_string as String)
+                date = Date.internetDateFormatter.date(from: rfc822_string as String)
             }
             
             if date == nil
             {
-                NSDate.internetDateFormatter.dateFormat = "d MMM yyyy HH:mm"
+                Date.internetDateFormatter.dateFormat = "d MMM yyyy HH:mm"
                 
-                date = NSDate.internetDateFormatter.dateFromString(rfc822_string as String)
+                date = Date.internetDateFormatter.date(from: rfc822_string as String)
             }
         }
         
@@ -119,36 +119,36 @@ extension NSDate {
         return date
     }
     
-    class func dateFromRFC3339String(dateString: String!) -> NSDate?
+    static func dateFromRFC3339String(_ dateString: String!) -> Date?
     {
-        var date: NSDate? = nil
+        var date: Date? = nil
         
-        var rfc3339_string: NSString = dateString.uppercaseString
+        var rfc3339_string: NSString = dateString.uppercased() as NSString
         
         if rfc3339_string.length > 20
         {
-            rfc3339_string = rfc3339_string.stringByReplacingOccurrencesOfString(":", withString: "", options: .CaseInsensitiveSearch, range: NSMakeRange(20, rfc3339_string.length-20))
+            rfc3339_string = rfc3339_string.replacingOccurrences(of: ":", with: "", options: .caseInsensitive, range: NSMakeRange(20, rfc3339_string.length-20)) as NSString
         }
         
         if date == nil
         {
-            NSDate.internetDateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
+            Date.internetDateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
             
-            date = NSDate.internetDateFormatter.dateFromString(rfc3339_string as String)
+            date = Date.internetDateFormatter.date(from: rfc3339_string as String)
         }
         
         if date == nil // this case may need more work
         {
-            NSDate.internetDateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSZZZ"
+            Date.internetDateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSZZZ"
             
-            date = NSDate.internetDateFormatter.dateFromString(rfc3339_string as String)
+            date = Date.internetDateFormatter.date(from: rfc3339_string as String)
         }
         
         if date == nil
         {
-            NSDate.internetDateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss"
+            Date.internetDateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss"
             
-            date = NSDate.internetDateFormatter.dateFromString(rfc3339_string as String)
+            date = Date.internetDateFormatter.date(from: rfc3339_string as String)
         }
         
         if date == nil

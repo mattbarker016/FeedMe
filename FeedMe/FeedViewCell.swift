@@ -18,11 +18,11 @@ class FeedViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func setFeed(feed: RSSFeed!) {
+    func setFeed(_ feed: RSSFeed!) {
         if feed.customTitle != nil {
             feedName.text = feed.customTitle
         } else {

@@ -24,31 +24,31 @@ class TableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func setArticle(article: RSSItem!){
+    func setArticle(_ article: RSSItem!){
         
         //set headline and preview
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             self.headline.text = self.stringParser(article.title!)
             self.preview.text = self.stringParser(article.itemDescription!)
         })
         
         //load article image; if it exists, display it (stored in RSSFeed class)
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             if article.picture == nil {
                 self.picView.image = article.picture
             }
         })
         
         //load picture if there is one, otherwise "delete" picture view
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             if article.picture != nil {
                 self.leadingSpace.constant = 8
                 self.width.constant = 115
-                self.picView.contentMode = .ScaleAspectFit
+                self.picView.contentMode = .scaleAspectFit
                 self.picView.image = article.picture
             
             }
@@ -67,35 +67,35 @@ class TableViewCell: UITableViewCell {
         }
         
         //create date of article based on pubDate
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "EEE h:mm a"
-        time.text = formatter.stringFromDate(article.pubDate!)
+        time.text = formatter.string(from: article.pubDate! as Date)
     }
     
-    func stringParser(input: String) -> String {
+    func stringParser(_ input: String) -> String {
         
         var string = input
         
         //remove anything in-between < and >
-        while string.containsString("<") && string.containsString(">") {
-            let range = string.rangeOfString("<")!.maxElement()!..<string.rangeOfString(">")!.minElement()!.advancedBy(1)
-            string.removeRange(range)
+        while string.contains("<") && string.contains(">") {
+            let range = string.range(of: "<")!.lowerBound..<string.range(of: ">")!.upperBound
+            string.removeSubrange(range)
         }
         //remove potential space at start of preview
         if string[string.startIndex] == " " {
-            string = string.substringFromIndex(string.startIndex.advancedBy(1))
+            string = string.substring(from: string.characters.index(string.startIndex, offsetBy: 1))
         }
         
         //remove occasional codes in strings that aren't parsed by RSSParser
-        string = string.stringByReplacingOccurrencesOfString("&#039;", withString: "'")
-        string = string.stringByReplacingOccurrencesOfString("&quot;", withString: "\"")
-        string = string.stringByReplacingOccurrencesOfString("&amp;", withString: "&")
-        string = string.stringByReplacingOccurrencesOfString("&ldquo;", withString: "\"")
-        string = string.stringByReplacingOccurrencesOfString("&rdquo;", withString: "\"")
-        string = string.stringByReplacingOccurrencesOfString("&lsquo;", withString: "\'")
-        string = string.stringByReplacingOccurrencesOfString("&rsquo;", withString: "\'")
-        string = string.stringByReplacingOccurrencesOfString("&ndash;", withString: "-")
-        string = string.stringByReplacingOccurrencesOfString("&mdash;", withString: "–")
+        string = string.replacingOccurrences(of: "&#039;", with: "'")
+        string = string.replacingOccurrences(of: "&quot;", with: "\"")
+        string = string.replacingOccurrences(of: "&amp;", with: "&")
+        string = string.replacingOccurrences(of: "&ldquo;", with: "\"")
+        string = string.replacingOccurrences(of: "&rdquo;", with: "\"")
+        string = string.replacingOccurrences(of: "&lsquo;", with: "\'")
+        string = string.replacingOccurrences(of: "&rsquo;", with: "\'")
+        string = string.replacingOccurrences(of: "&ndash;", with: "-")
+        string = string.replacingOccurrences(of: "&mdash;", with: "–")
         
         return string
     }

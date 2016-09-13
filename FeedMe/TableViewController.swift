@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 
 protocol NewFeedDelegate {
-    func didChangeFeedArray(newFeedArray: [RSSFeed])
+    func didChangeFeedArray(_ newFeedArray: [RSSFeed])
 }
 
 class TableViewController: UITableViewController, SFSafariViewControllerDelegate, NewFeedDelegate {
@@ -20,18 +20,18 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     var customTitle: String?
     
     //starter sites
-    var addressArray = [NSURL(string: "http://machash.com/feed/")!,
-                        NSURL(string: "http://rss.news.yahoo.com/rss/entertainment")!,
-                        NSURL(string: "http://feeds.nytimes.com/nyt/rss/Technology")!]
+    var addressArray = [URL(string: "http://machash.com/feed/")!,
+                        URL(string: "http://rss.news.yahoo.com/rss/entertainment")!,
+                        URL(string: "http://feeds.nytimes.com/nyt/rss/Technology")!]
     
     //NewFeedDelegate Function
-    func didChangeFeedArray(newFeedArray: [RSSFeed]) {
+    func didChangeFeedArray(_ newFeedArray: [RSSFeed]) {
         feedArray = newFeedArray
         getStuff()
         self.tableView.reloadData()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         var x = 0
         for feed in feedArray {
             print("feed #\(x): \(feed.title!)")
@@ -46,12 +46,12 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
         
         //intialize pull to refresh
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(TableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refreshControl)
         
         }
     
-    func refresh(sender: UIRefreshControl) {
+    func refresh(_ sender: UIRefreshControl) {
         getStuff()
         self.tableView.reloadData()
         sender.endRefreshing()
@@ -67,7 +67,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
         
         //get articles from each feed, place in general array, sort by date, load images if possible
         for address in self.addressArray {
-            let request: NSURLRequest = NSURLRequest(URL: address)
+            let request: URLRequest = URLRequest(url: address)
             RSSParser.parseFeedForRequest(request, callback: { (feed, error) in
                 if feed != nil {
                     feed!.rawLink = address
@@ -78,7 +78,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
                         self.getDataFromUrl(articles.imagesFromItemDescription[0], completion: { (data, response, error) -> Void in
                             if error == nil {
                                 articles.picture = UIImage(data: data!)
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                DispatchQueue.main.async(execute: { () -> Void in
                                     self.tableView.reloadData()
                                 })
                             }
@@ -87,24 +87,24 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
                     self.itemArray.append(articles)
                     self.tableView.reloadData()
                 }
-                self.itemArray.sortInPlace { $0.pubDate!.compare($1.pubDate!) == .OrderedDescending }
+                self.itemArray.sort { $0.pubDate!.compare($1.pubDate!) == .orderedDescending }
                 }
             })
         }
     }
     
     //helper function to load pictures safely if they exist, see above
-    func getDataFromUrl(url: NSURL, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {
-        NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
-            completion(data: data, response: response, error: error)
-            }.resume()
+    func getDataFromUrl(_ url: URL, completion: @escaping ((_ data: Data?, _ response: URLResponse?, _ error: Error? ) -> Void)) {
+        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+            completion(data, response, error)
+            }) .resume()
     }
     
     //parse all feeds in feedArray, and add them to itemArray for display
     func getStuff() {
         itemArray.removeAll() //remove exisitng items so there are no duplicates
         for eachFeed in self.feedArray {
-            RSSParser.parseFeedForRequest(NSURLRequest(URL: eachFeed.rawLink!), callback: { (feed, error) in
+            RSSParser.parseFeedForRequest(URLRequest(url: eachFeed.rawLink!), callback: { (feed, error) in
             if feed != nil {
                 self.customTitle = eachFeed.customTitle ?? eachFeed.title!
                 for articles in feed!.items {
@@ -113,7 +113,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
                         self.getDataFromUrl(articles.imagesFromItemDescription[0], completion: { (data, response, error) -> Void in
                             if error == nil {
                                 articles.picture = UIImage(data: data!)
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                DispatchQueue.main.async(execute: { () -> Void in
                                     self.tableView.reloadData()
                                 })
                             }
@@ -122,38 +122,38 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
                     self.itemArray.append(articles)
                         }
                     }
-                    self.itemArray.sortInPlace { $0.pubDate!.compare($1.pubDate!) == .OrderedDescending }
+                    self.itemArray.sort { $0.pubDate!.compare($1.pubDate!) == .orderedDescending }
                     self.tableView.reloadData()
                 })
             }
     }
     
     //initalize table with data
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
     }
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Article") as! TableViewCell
-        cell.setArticle(itemArray[indexPath.row])
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Article") as! TableViewCell
+        cell.setArticle(itemArray[(indexPath as NSIndexPath).row])
         return cell
     }
     
     //open link in SVC, fade article
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let link = itemArray[indexPath.row].link
-        let svc = SFSafariViewController(URL: link!, entersReaderIfAvailable: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let link = itemArray[(indexPath as NSIndexPath).row].link
+        let svc = SFSafariViewController(url: link! as URL, entersReaderIfAvailable: true)
         svc.delegate = self
-        self.presentViewController(svc, animated: true, completion: nil)
-        tableView.cellForRowAtIndexPath(indexPath)?.alpha = 0.4
+        self.present(svc, animated: true, completion: nil)
+        tableView.cellForRow(at: indexPath)?.alpha = 0.4
     }
     
     //dismiss SVC
-    func safariViewControllerDidFinish(controller: SFSafariViewController) { controller.dismissViewControllerAnimated(true, completion: nil) }
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) { controller.dismiss(animated: true, completion: nil) }
     
     //transfer feed data to feeds page
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "feedList" {
-            let destination = segue.destinationViewController as! FeedViewController
+            let destination = segue.destination as! FeedViewController
             destination.feedArrayInFeedView = feedArray
             }
         }
