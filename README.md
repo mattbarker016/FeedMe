@@ -1,7 +1,9 @@
 # FeedMe
 
 A Simple Swift RSS Feed Reader
+
 CUAppDev Developer Training Program Final Project
+
 Big Red Hacks Learn iOS App Example
 
 ## Features
