@@ -22,17 +22,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.newFeedTextField.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
         
-        feedStatus.textColor = UIColor.darkText
-        feedStatus.isHidden = true
+        newFeedTextField.delegate = self
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        feedStatus.textColor = UIColor.darkText
+    override func viewWillAppear(_ animated: Bool) {
+        feedStatus.textColor = .darkText
         feedStatus.isHidden = true
     }
 
@@ -63,6 +61,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
+        // Create Delete option for UITableViewCell swipe
         let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
             self.feedArray.remove(at: indexPath.row)
             self.delegate?.didChange(to: self.feedArray)
@@ -78,7 +77,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
 
-    // Check if feed already exists in list
+    /// Check if feed already exists in list
     func checkDup(_ existingFeed: RSSFeed, url: URL) -> Bool {
         for feed in feedArray {
             if feed.link == existingFeed.link {
@@ -90,7 +89,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         return true
     }
     
-    //parse and save new url feed
+    /// Parse and save new url feed
     @IBAction func saveFeed() {
         
         if let validURL = URL(string: newFeedTextField.text!) {
@@ -108,13 +107,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.feedStatus.textColor = UIColor.green
                 }
                 
-                // nothing in textfield
+                // Nothing in textfield
                 if self.newFeedTextField.text == "" {
                     self.feedStatus.text = "Enter Something First!"
                     self.feedStatus.textColor = UIColor.red
                 }
                 
-                // not a valid url
+                // Not a valid url
                 if feed == nil {
                     self.feedStatus.text = "Invalid Feed"
                     self.feedStatus.textColor = UIColor.red

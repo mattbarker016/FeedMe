@@ -42,25 +42,29 @@ class RSSParser: NSObject, XMLParserDelegate {
     let node_author = "dc:creator"
     let node_category = "category"
     
-    func parseFeedForRequest(_ request: URLRequest, callback: @escaping (_ feed: RSSFeed?, _ error: NSError?) -> Void)
-    {
-
-        NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { (response, data, error) -> Void in
-            
-            if ((error) != nil)
-            {
+    func parseFeedForRequest(_ request: URLRequest, callback: @escaping (_ feed: RSSFeed?, _ error: NSError?) -> Void) {
+        
+        func completion(_ data: Data?, _ response: URLResponse?, _ error: Error?) {
+            if error != nil {
                 callback(nil, error as NSError?)
-            }
-            else
-            {
+            } else {
                 self.callbackClosure = callback
-                
                 let parser : XMLParser = XMLParser(data: data!)
                 parser.delegate = self
                 parser.shouldResolveExternalEntities = false
                 parser.parse()
             }
         }
+        
+        /*
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            completion(data, response, error)
+        }*/
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { (response, data, error) -> Void in
+            completion(data, response, error)
+        }
+        
     }
     
 // MARK: NSXMLParserDelegate

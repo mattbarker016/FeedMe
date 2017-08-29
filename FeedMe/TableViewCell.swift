@@ -30,63 +30,54 @@ class TableViewCell: UITableViewCell {
     
     func setArticle(_ article: RSSItem!){
         
-        //set headline and preview
-        DispatchQueue.main.async(execute: {
-            self.headline.text = self.stringParser(article.title!)
-            self.preview.text = self.stringParser(article.itemDescription!)
-        })
+        self.headline.text = self.stringParser(article.title!)
+        self.preview.text = self.stringParser(article.itemDescription!)
         
-        //load article image; if it exists, display it (stored in RSSFeed class)
-        DispatchQueue.main.async(execute: {
-            if article.picture == nil {
-                self.picView.image = article.picture
-            }
-        })
-        
-        //load picture if there is one, otherwise "delete" picture view
-        DispatchQueue.main.async(execute: {
-            if article.picture != nil {
-                self.leadingSpace.constant = 8
-                self.width.constant = 115
-                self.picView.contentMode = .scaleAspectFit
-                self.picView.image = article.picture
-            
-            }
-            else {
-                self.leadingSpace.constant = 0
-                self.width.constant = 0
-            }
-        })
-        
-        feedName.text = article.feedName
-        
-        //load author if it exists
-        author.text = ""
-        if article.author != nil {
-            author.text = "by "+article.author!
+        // load article image; if it exists, display it (stored in RSSFeed class)
+        if article.picture == nil {
+            self.picView.image = article.picture
         }
         
-        //create date of article based on pubDate
+        // If image exists, set picture; otherwise, hide imageView
+        if let picture = article.picture {
+            self.leadingSpace.constant = 8
+            self.width.constant = 115
+            self.picView.contentMode = .scaleAspectFit
+            self.picView.image = picture
+        } else {
+            self.leadingSpace.constant = 0
+            self.width.constant = 0
+        }
+        
+        // Set feed name
+        feedName.text = article.feedName
+        
+        // Set author name
+        author.text = article.author != nil ? "by \(article.author!)" : ""
+        
+        // Set date of publication
         let formatter = DateFormatter()
         formatter.dateFormat = "EEE h:mm a"
         time.text = formatter.string(from: article.pubDate! as Date)
+        
     }
     
     func stringParser(_ input: String) -> String {
         
         var string = input
         
-        //remove anything in-between < and >
+        // Remove anything in-between < and >
         while string.contains("<") && string.contains(">") {
             let range = string.range(of: "<")!.lowerBound..<string.range(of: ">")!.upperBound
             string.removeSubrange(range)
         }
-        //remove potential space at start of preview
+        
+        // Remove potential space at start of preview
         if string[string.startIndex] == " " {
             string = string.substring(from: string.characters.index(string.startIndex, offsetBy: 1))
         }
         
-        //remove occasional codes in strings that aren't parsed by RSSParser
+        // Remove occasional codes in strings that aren't parsed by RSSParser
         string = string.replacingOccurrences(of: "&#039;", with: "'")
         string = string.replacingOccurrences(of: "&quot;", with: "\"")
         string = string.replacingOccurrences(of: "&amp;", with: "&")
@@ -98,6 +89,7 @@ class TableViewCell: UITableViewCell {
         string = string.replacingOccurrences(of: "&mdash;", with: "–")
         
         return string
+        
     }
     
     

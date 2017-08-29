@@ -30,7 +30,6 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     //NewFeedDelegate Function
     func didChange(to newFeedArray: [RSSFeed]) {
         addressArray = newFeedArray.flatMap { $0.rawLink!.absoluteString }
-        print("addressArray:", addressArray)
         loadFeeds()
         self.tableView.reloadData()
     }
@@ -46,7 +45,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
         
         // Intialize pull to refresh
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(TableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(tableView, action: #selector(UITableView.reloadData), for: .valueChanged)
         tableView.addSubview(refreshControl)
         
         title = "FeedMe"
@@ -64,7 +63,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
         super.didReceiveMemoryWarning()
     }
     
-    // Helper function to load pictures safely if they exist, see above
+    /// Helper function to load pictures safely if they exist, see above
     func getImageData(from url: URL, completion: @escaping ((_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void)) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             completion(data, response, error)
@@ -87,7 +86,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
         
     }
     
-    /// Parse the
+    /// Parse the RSSFeed to retrieve feed name, articles, images, etc.
     func parse(_ feed: RSSFeed?) {
         
         if feed != nil {
@@ -146,11 +145,6 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
             let destination = segue.destination as! FeedViewController
             destination.feedArray = feedArray
         }
-    }
-    
-    func reload() {
-         // remove exisitng items so there are no duplicates
-        self.tableView.reloadData()
     }
     
 }
