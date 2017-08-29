@@ -58,3 +58,7 @@ Outside Help:
 - Lucas Derraugh (layouts, delegates)
 - Austin Astorga (background threads)
 - StackOverflow (so many things, so many)
+
+## Comments (December 2015)
+
+While Swift and Xcode were often frustrating, I very much enjoyed the class and assignments. At first, I felt completely lost on assignments, having to read and look up basic questions on my own. However, I grew more comfortable researching and searching for answers online as the class progressed. Early lectures were organized and straightforward. The teacher made Office Hours available, as well as timely Piazza help that was beneficial. I felt like I put in more work for this 1 credit class than other 3 and 4 credit classes, I'm just not sure if that's because I was interested and engaged or the class should be worth more credits. I can't wait to start and continue my own projects over Winter Break! Thanks for having this class, and I hope I can be a part of AppDev after getting more experience under my belt.
