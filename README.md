@@ -1,14 +1,15 @@
 # FeedMe
 
-A Simple Swift RSS Feed Reader – CUAppDev Developer Training Program Final Project
+A Simple Swift RSS Feed Reader
+CUAppDev Developer Training Program Final Project
+Big Red Hacks Learn iOS App Example
 
 ## Features
 - open articles in optimized Reader view, if available
-	- advanced browser functionality (iOS 9 SVC) with seamless sharing capabilities
+	- advanced browser functionality with seamless sharing capabilities
 	- swipe back from edge of screen
 - add feeds via URL (three default websites provided)
 	- rejects duplicates, non-URLS, and URLs that aren't valid feeds
-- rename feeds (a necessity for ugly feed names!)
 - open main website page of feeds
 - delete feeds
 - articles marked as read via faded cell (see Known Issues)
@@ -20,7 +21,7 @@ A Simple Swift RSS Feed Reader – CUAppDev Developer Training Program Final Pro
 - 6 different feed status messages
 - landscape mode
 - hitting return on the keyboard will save / add feed
-- concise custom date / time template parsed from NSDate
+- concise custom date / time template parsed from Date
 - labels truncate / shorten if too long in the article info under preview
 - custom stringParser to clean up parsed text (html, urls, tags, char. codes)
 - LaunchScreen included
@@ -32,11 +33,12 @@ A Simple Swift RSS Feed Reader – CUAppDev Developer Training Program Final Pro
 - layout complaints because of UIAlertController
 - depreciated function in Swift RSS Parser
 
-## Roadmap (if pursued)
+## Potential Roadmap
 - fixing known issues
+- re-implement feed renaming (a necessity for ugly feed names!)
 - color-coding feeds
 - swipe to mark as read/unread & mark all as read
-- save user's feeds to NSUserDefaults
+- save user's feeds to UserDefaults
 - hide feeds / view select feeds
 - settings / about page
 - load more articles / limit number of articles loaded
@@ -44,7 +46,7 @@ A Simple Swift RSS Feed Reader – CUAppDev Developer Training Program Final Pro
 
 ## Credits
 
-Code/Design: Matt Barker
+Code / Design: Matt Barker
 
 SwiftRSS Parser: @pristap forked from @AlexChesters (w/ some small personal mods)
 
