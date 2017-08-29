@@ -11,15 +11,14 @@
 		BFF8B0831C0D33B000E55A6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF8B0821C0D33B000E55A6D /* LaunchScreen.storyboard */; };
 		BFF8B0851C0D33B700E55A6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF8B0841C0D33B700E55A6D /* Main.storyboard */; };
 		BFF8B0871C0D33CC00E55A6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0861C0D33CC00E55A6D /* AppDelegate.swift */; };
-		BFF8B0901C0D33E800E55A6D /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B08B1C0D33E800E55A6D /* FeedViewCell.swift */; };
 		BFF8B0911C0D33E800E55A6D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B08C1C0D33E800E55A6D /* FeedViewController.swift */; };
 		BFF8B0921C0D33E800E55A6D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B08D1C0D33E800E55A6D /* TableViewCell.swift */; };
 		BFF8B0931C0D33E900E55A6D /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B08E1C0D33E800E55A6D /* TableViewController.swift */; };
-		BFF8B0991C0D34B700E55A6D /* NSDate+dateFromInternetDateTimeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0941C0D34B700E55A6D /* NSDate+dateFromInternetDateTimeString.swift */; };
+		BFF8B0991C0D34B700E55A6D /* Extensions+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0941C0D34B700E55A6D /* Extensions+Date.swift */; };
 		BFF8B09A1C0D34B700E55A6D /* RSSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0951C0D34B700E55A6D /* RSSFeed.swift */; };
 		BFF8B09B1C0D34B700E55A6D /* RSSItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0961C0D34B700E55A6D /* RSSItem.swift */; };
 		BFF8B09C1C0D34B700E55A6D /* RSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0971C0D34B700E55A6D /* RSSParser.swift */; };
-		BFF8B09D1C0D34B700E55A6D /* String+imageLinksFromHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0981C0D34B700E55A6D /* String+imageLinksFromHTML.swift */; };
+		BFF8B09D1C0D34B700E55A6D /* Extensions+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8B0981C0D34B700E55A6D /* Extensions+String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,15 +28,14 @@
 		BFF8B0841C0D33B700E55A6D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BFF8B0861C0D33CC00E55A6D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFF8B0881C0D33E000E55A6D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BFF8B08B1C0D33E800E55A6D /* FeedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
 		BFF8B08C1C0D33E800E55A6D /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		BFF8B08D1C0D33E800E55A6D /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		BFF8B08E1C0D33E800E55A6D /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		BFF8B0941C0D34B700E55A6D /* NSDate+dateFromInternetDateTimeString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+dateFromInternetDateTimeString.swift"; sourceTree = "<group>"; };
+		BFF8B0941C0D34B700E55A6D /* Extensions+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Date.swift"; sourceTree = "<group>"; };
 		BFF8B0951C0D34B700E55A6D /* RSSFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSFeed.swift; sourceTree = "<group>"; };
 		BFF8B0961C0D34B700E55A6D /* RSSItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSItem.swift; sourceTree = "<group>"; };
 		BFF8B0971C0D34B700E55A6D /* RSSParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSParser.swift; sourceTree = "<group>"; };
-		BFF8B0981C0D34B700E55A6D /* String+imageLinksFromHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+imageLinksFromHTML.swift"; sourceTree = "<group>"; };
+		BFF8B0981C0D34B700E55A6D /* Extensions+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+String.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +49,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF07F85D1F5502E800D6AB6A /* RSS Files */ = {
+			isa = PBXGroup;
+			children = (
+				BFF8B0951C0D34B700E55A6D /* RSSFeed.swift */,
+				BFF8B0961C0D34B700E55A6D /* RSSItem.swift */,
+				BFF8B0971C0D34B700E55A6D /* RSSParser.swift */,
+				BFF8B0941C0D34B700E55A6D /* Extensions+Date.swift */,
+				BFF8B0981C0D34B700E55A6D /* Extensions+String.swift */,
+			);
+			name = "RSS Files";
+			sourceTree = "<group>";
+		};
 		BFF8B0641C0D338100E55A6D = {
 			isa = PBXGroup;
 			children = (
@@ -71,18 +81,13 @@
 			isa = PBXGroup;
 			children = (
 				BFF8B0861C0D33CC00E55A6D /* AppDelegate.swift */,
-				BFF8B0841C0D33B700E55A6D /* Main.storyboard */,
 				BFF8B08E1C0D33E800E55A6D /* TableViewController.swift */,
 				BFF8B08D1C0D33E800E55A6D /* TableViewCell.swift */,
 				BFF8B08C1C0D33E800E55A6D /* FeedViewController.swift */,
-				BFF8B08B1C0D33E800E55A6D /* FeedViewCell.swift */,
-				BFF8B0771C0D338100E55A6D /* Assets.xcassets */,
+				BFF8B0841C0D33B700E55A6D /* Main.storyboard */,
 				BFF8B0821C0D33B000E55A6D /* LaunchScreen.storyboard */,
-				BFF8B0941C0D34B700E55A6D /* NSDate+dateFromInternetDateTimeString.swift */,
-				BFF8B0951C0D34B700E55A6D /* RSSFeed.swift */,
-				BFF8B0961C0D34B700E55A6D /* RSSItem.swift */,
-				BFF8B0971C0D34B700E55A6D /* RSSParser.swift */,
-				BFF8B0981C0D34B700E55A6D /* String+imageLinksFromHTML.swift */,
+				BF07F85D1F5502E800D6AB6A /* RSS Files */,
+				BFF8B0771C0D338100E55A6D /* Assets.xcassets */,
 				BFF8B0881C0D33E000E55A6D /* Info.plist */,
 			);
 			path = FeedMe;
@@ -164,12 +169,11 @@
 				BFF8B09B1C0D34B700E55A6D /* RSSItem.swift in Sources */,
 				BFF8B0921C0D33E800E55A6D /* TableViewCell.swift in Sources */,
 				BFF8B0931C0D33E900E55A6D /* TableViewController.swift in Sources */,
-				BFF8B0991C0D34B700E55A6D /* NSDate+dateFromInternetDateTimeString.swift in Sources */,
+				BFF8B0991C0D34B700E55A6D /* Extensions+Date.swift in Sources */,
 				BFF8B0871C0D33CC00E55A6D /* AppDelegate.swift in Sources */,
 				BFF8B09A1C0D34B700E55A6D /* RSSFeed.swift in Sources */,
 				BFF8B0911C0D33E800E55A6D /* FeedViewController.swift in Sources */,
-				BFF8B09D1C0D34B700E55A6D /* String+imageLinksFromHTML.swift in Sources */,
-				BFF8B0901C0D33E800E55A6D /* FeedViewCell.swift in Sources */,
+				BFF8B09D1C0D34B700E55A6D /* Extensions+String.swift in Sources */,
 				BFF8B09C1C0D34B700E55A6D /* RSSParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,7 +219,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -256,7 +260,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -269,10 +273,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FV2G57GLFW;
 				INFOPLIST_FILE = FeedMe/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Paft-Dunk.FeedMe";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mattbarker.FeedMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -282,10 +287,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FV2G57GLFW;
 				INFOPLIST_FILE = FeedMe/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Paft-Dunk.FeedMe";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mattbarker.FeedMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
