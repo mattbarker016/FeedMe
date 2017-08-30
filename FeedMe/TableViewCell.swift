@@ -28,12 +28,12 @@ class TableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setArticle(_ article: RSSItem!){
+    func setArticle(_ article: RSSItem!) {
         
         headline.text = stringParser(article.title!)
         preview.text = stringParser(article.itemDescription!)
                 
-        // load article image; if it exists, display it (stored in RSSFeed class)
+        // Load article image; if it exists, display it (stored in RSSFeed class)
         if article.picture == nil {
             picView.image = article.picture
         }
@@ -62,6 +62,7 @@ class TableViewCell: UITableViewCell {
         
     }
     
+    /// Parse RSSItem text
     func stringParser(_ input: String) -> String {
         
         var string = input
@@ -77,8 +78,8 @@ class TableViewCell: UITableViewCell {
             string = string.substring(from: string.characters.index(string.startIndex, offsetBy: 1))
         }
         
-        // Remove occasional codes in strings that aren't parsed by RSSParser
-        string = string.replacingOccurrences(of: "&#039;", with: "'")
+        // Remove common HTML entities
+        string = string.replacingOccurrences(of: "&apos;", with: "'")
         string = string.replacingOccurrences(of: "&quot;", with: "\"")
         string = string.replacingOccurrences(of: "&amp;", with: "&")
         string = string.replacingOccurrences(of: "&ldquo;", with: "\"")
@@ -87,6 +88,10 @@ class TableViewCell: UITableViewCell {
         string = string.replacingOccurrences(of: "&rsquo;", with: "\'")
         string = string.replacingOccurrences(of: "&ndash;", with: "-")
         string = string.replacingOccurrences(of: "&mdash;", with: "–")
+        string = string.replacingOccurrences(of: "&lt;", with: "<")
+        string = string.replacingOccurrences(of: "&gt;", with: ">")
+        string = string.replacingOccurrences(of: "&copy;", with: "©")
+        string = string.replacingOccurrences(of: "&reg;", with: "®")
         
         return string
         

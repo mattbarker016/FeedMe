@@ -9,6 +9,7 @@
 import UIKit
 
 extension String {
+    
     var imageLinksFromHTMLString: [URL]
     {
         var matches = [URL]()
@@ -32,4 +33,5 @@ extension String {
         
         return matches
     }
+        
 }

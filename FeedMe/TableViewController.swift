@@ -21,7 +21,6 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     // Starter sites
     var addressArray = [
         
-        "http://machash.com/feed/",
         "http://rss.news.yahoo.com/rss/entertainment",
         "http://feeds.nytimes.com/nyt/rss/Technology",
     
@@ -41,47 +40,76 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadFeeds()
+        // Set up view
+        title = "FeedMe"
         
         // Intialize pull to refresh
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(tableView, action: #selector(UITableView.reloadData), for: .valueChanged)
-        tableView.addSubview(refreshControl)
+        let spinner = UIRefreshControl()
+        spinner.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        refreshControl = spinner
         
-        title = "FeedMe"
+        // Begin initial loading
+        loadFeeds()
         
     }
     
     func refresh(_ sender: UIRefreshControl) {
-        itemArray.removeAll()
-        feedArray.removeAll()
         loadFeeds()
-        sender.endRefreshing()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    /// Helper function to load pictures safely if they exist, see above
-    func getImageData(from url: URL, completion: @escaping ((_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void)) {
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            completion(data, response, error)
+    /// Helper function that returns UIImage if image exists. Returns nil if none
+    func getImageData(from url: URL?, completion: @escaping (UIImage?) -> Void) {
+        
+        guard let imageURL = url
+        else {
+            print("[TableViewController] getImageData URL Doesn't Exist!")
+            completion(nil); return
+        }
+        
+        URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
+            if data != nil && error == nil {
+                completion(UIImage(data: data!))
+            } else {
+                print("[TableViewController] getImageData error:", error!.localizedDescription)
+                completion(nil)
+            }
         }.resume()
+        
     }
     
     /// Load feed from URL address
     func loadFeeds() {
+
+        itemArray.removeAll()
+        feedArray.removeAll()
         
+        var index = 0
         for address in addressArray {
+            
             let request: URLRequest = URLRequest(url: URL(string: address)!)
+            
             RSSParser.parseFeedForRequest(request) { (feed, error) in
+                
                 if error == nil {
+                    feed?.rawLink = URL(string: address)
                     self.parse(feed)
                 } else {
                     print("[TableViewController] loadFeeds Error:", error!.localizedDescription)
                 }
+                
+                index += 1
+                
+                // End refresh on last task completion
+                if index == self.addressArray.count - 1 {
+                    self.refreshControl?.endRefreshing()
+                }
+                
             }
+            
         }
         
     }
@@ -93,19 +121,21 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
             
             feedArray.append(feed!)
             
-            for articles in feed!.items {
-                articles.feedName = feed?.title // sets custom/regular title to feedName if exists
-                if articles.imagesFromItemDescription != [] {
-                    self.getImageData(from: articles.imagesFromItemDescription[0]) { (data, response, error) in
-                        if error == nil {
-                            articles.picture = UIImage(data: data!)
-                            DispatchQueue.main.async {
-                                self.tableView.reloadData()
-                            }
+            for article in feed!.items {
+                
+                article.feedName = feed?.title
+                
+                if !article.imagesFromItemDescription.isEmpty {
+                    self.getImageData(from: article.imagesFromItemDescription.first) { (image) in
+                        article.picture = image
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
                         }
                     }
                 }
-                self.itemArray.append(articles)
+                
+                self.itemArray.append(article)
+                
             }
             
             itemArray.sort { $0.pubDate!.compare($1.pubDate!) == .orderedDescending }
@@ -114,9 +144,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
         }
         
         else {
-            
             print("[TableViewController] parse: Feed doesn't exist!")
-            
         }
         
     }
@@ -143,6 +171,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "feedList" {
             let destination = segue.destination as! FeedViewController
+            destination.delegate = self
             destination.feedArray = feedArray
         }
     }
