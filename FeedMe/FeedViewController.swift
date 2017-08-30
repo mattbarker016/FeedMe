@@ -11,13 +11,13 @@ import SafariServices
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UITextFieldDelegate {
     
-    @IBOutlet weak var newFeedTextField: UITextField!
-    @IBOutlet weak var feedStatus: UILabel!
     @IBOutlet weak var addNewFeed: UILabel!
+    @IBOutlet weak var newFeedTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
-    var delegate: NewFeedDelegate?
     var feedArray = [RSSFeed]()
+    
+    var delegate: NewFeedDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +30,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        feedStatus.textColor = .darkText
-        feedStatus.isHidden = true
+        super.viewWillAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    // MARK: UITableView Data Source and Delegate Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return feedArray.count
@@ -47,6 +48,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.textLabel?.text = feedArray[indexPath.row].title
         cell.detailTextLabel?.text = feedArray[indexPath.row].link?.absoluteString
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let feed = feedArray[indexPath.row]
+        let safariViewController = SFSafariViewController(url: feed.link!)
+        present(safariViewController, animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: Cell Editing Functions
@@ -62,9 +70,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.feedArray.remove(at: indexPath.row)
             self.delegate?.didChange(to: self.feedArray)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            self.feedStatus.isHidden = false
-            self.feedStatus.text = "Feed Removed!"
-            self.feedStatus.textColor = .green
         }
         
         delete.backgroundColor = .red
@@ -72,54 +77,40 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         return [delete]
         
     }
-
-    /// Check if feed already exists in list
-    func checkDup(_ existingFeed: RSSFeed, url: URL) -> Bool {
-        for feed in feedArray {
-            if feed.link == existingFeed.link {
-                self.feedStatus.text = "Feed Already In List!"
-                self.feedStatus.textColor = .red
-                return false
-            }
-        }
-        return true
-    }
     
-    /// Parse and save new url feed
+    // MARK: Other Functions
+    
+    /// Parse and save new URL as RSS Feed
     @IBAction func saveFeed() {
         
-        if let validURL = URL(string: newFeedTextField.text!) {
+        if let validURL = URL(string: newFeedTextField.text ?? "") {
             
             let request: URLRequest = URLRequest(url: validURL)
             
             RSSParser.parseFeedForRequest(request) { (feed, error) in
                 
-                if feed != nil && self.checkDup(feed!, url: validURL) {
+                // Save feed
+                if feed != nil {
                     feed!.rawLink = validURL
                     self.feedArray.append(feed!)
-                    self.tableView.reloadData()
                     self.delegate?.didChange(to: self.feedArray)
-                    self.feedStatus.text = "Feed Successfully Added!"
-                    self.feedStatus.textColor = UIColor.green
                 }
                 
-                // Nothing in textfield
-                if self.newFeedTextField.text == "" {
-                    self.feedStatus.text = "Enter Something First!"
-                    self.feedStatus.textColor = UIColor.red
+                // Show error message
+                else {
+                    let title = "Invalid Feed"
+                    let message = "Please enter a valid RSS feed URL!"
+                    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(action)
+                    self.present(alertController, animated: true, completion: nil)
                 }
                 
-                // Not a valid url
-                if feed == nil {
-                    self.feedStatus.text = "Invalid Feed"
-                    self.feedStatus.textColor = UIColor.red
-                }
-                
-                self.feedStatus.isHidden = false
                 self.newFeedTextField.text = ""
                 self.tableView.reloadData()
                 
             }
+            
         }
         
         view.endEditing(true)
@@ -129,13 +120,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         newFeedTextField.resignFirstResponder()
         saveFeed()
         return true
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let feed = feedArray[indexPath.row]
-        let safariViewController = SFSafariViewController(url: feed.link!)
-        present(safariViewController, animated: true, completion: nil)
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     @IBAction func unwindToFeedView(_ sender: UIStoryboardSegue) { }

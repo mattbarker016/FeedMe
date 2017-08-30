@@ -41,7 +41,7 @@ class TableViewCell: UITableViewCell {
         // If image exists, set picture; otherwise, hide imageView
         if let picture = article.picture {
             leadingSpace.constant = 8
-            width.constant = 115
+            width.constant = 116
             picView.contentMode = .scaleAspectFit
             picView.image = picture
         } else {

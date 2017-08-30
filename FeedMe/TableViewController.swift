@@ -29,9 +29,9 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     
     //NewFeedDelegate Function
     func didChange(to newFeedArray: [RSSFeed]) {
-        addressArray = newFeedArray.flatMap { $0.rawLink!.absoluteString }
+        feedArray = newFeedArray
+        addressArray = feedArray.flatMap { $0.rawLink!.absoluteString }
         loadFeeds()
-        self.tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
