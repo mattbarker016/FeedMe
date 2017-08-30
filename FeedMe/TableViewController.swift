@@ -135,7 +135,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let link = itemArray[indexPath.row].link
         let safariViewController = SFSafariViewController(url: link!, entersReaderIfAvailable: true)
-        self.present(safariViewController, animated: true, completion: nil)
+        present(safariViewController, animated: true, completion: nil)
         tableView.cellForRow(at: indexPath)?.alpha = 0.4
     }
     

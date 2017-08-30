@@ -30,23 +30,23 @@ class TableViewCell: UITableViewCell {
     
     func setArticle(_ article: RSSItem!){
         
-        self.headline.text = self.stringParser(article.title!)
-        self.preview.text = self.stringParser(article.itemDescription!)
-        
+        headline.text = stringParser(article.title!)
+        preview.text = stringParser(article.itemDescription!)
+                
         // load article image; if it exists, display it (stored in RSSFeed class)
         if article.picture == nil {
-            self.picView.image = article.picture
+            picView.image = article.picture
         }
         
         // If image exists, set picture; otherwise, hide imageView
         if let picture = article.picture {
-            self.leadingSpace.constant = 8
-            self.width.constant = 115
-            self.picView.contentMode = .scaleAspectFit
-            self.picView.image = picture
+            leadingSpace.constant = 8
+            width.constant = 115
+            picView.contentMode = .scaleAspectFit
+            picView.image = picture
         } else {
-            self.leadingSpace.constant = 0
-            self.width.constant = 0
+            leadingSpace.constant = 0
+            width.constant = 0
         }
         
         // Set feed name
