@@ -28,10 +28,10 @@ class TableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setArticle(_ article: RSSItem!) {
+    func setArticle(_ article: RSSItem) {
         
-        headline.text = stringParser(article.title!)
-        preview.text = stringParser(article.itemDescription!)
+        headline.text = article.title!.htmlParse()
+        preview.text = article.itemDescription!.htmlParse()
                 
         // Load article image; if it exists, display it (stored in RSSFeed class)
         if article.picture == nil {
@@ -61,41 +61,5 @@ class TableViewCell: UITableViewCell {
         time.text = formatter.string(from: article.pubDate! as Date)
         
     }
-    
-    /// Parse RSSItem text
-    func stringParser(_ input: String) -> String {
-        
-        var string = input
-        
-        // Remove anything in-between < and >
-        while string.contains("<") && string.contains(">") {
-            let range = string.range(of: "<")!.lowerBound..<string.range(of: ">")!.upperBound
-            string.removeSubrange(range)
-        }
-        
-        // Remove potential space at start of preview
-        if string[string.startIndex] == " " {
-            string = string.substring(from: string.characters.index(string.startIndex, offsetBy: 1))
-        }
-        
-        // Remove common HTML entities
-        string = string.replacingOccurrences(of: "&apos;", with: "'")
-        string = string.replacingOccurrences(of: "&quot;", with: "\"")
-        string = string.replacingOccurrences(of: "&amp;", with: "&")
-        string = string.replacingOccurrences(of: "&ldquo;", with: "\"")
-        string = string.replacingOccurrences(of: "&rdquo;", with: "\"")
-        string = string.replacingOccurrences(of: "&lsquo;", with: "\'")
-        string = string.replacingOccurrences(of: "&rsquo;", with: "\'")
-        string = string.replacingOccurrences(of: "&ndash;", with: "-")
-        string = string.replacingOccurrences(of: "&mdash;", with: "–")
-        string = string.replacingOccurrences(of: "&lt;", with: "<")
-        string = string.replacingOccurrences(of: "&gt;", with: ">")
-        string = string.replacingOccurrences(of: "&copy;", with: "©")
-        string = string.replacingOccurrences(of: "&reg;", with: "®")
-        
-        return string
-        
-    }
-    
     
 }
