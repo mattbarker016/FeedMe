@@ -13,9 +13,6 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var picView: UIImageView!
     @IBOutlet weak var headline: UILabel!
     @IBOutlet weak var preview: UITextView!
-    @IBOutlet weak var feedName: UILabel!
-    @IBOutlet weak var author: UILabel!
-    @IBOutlet weak var time: UILabel!
     
     @IBOutlet weak var leadingSpace: NSLayoutConstraint!
     @IBOutlet weak var width: NSLayoutConstraint!
@@ -48,17 +45,6 @@ class TableViewCell: UITableViewCell {
             leadingSpace.constant = 0
             width.constant = 0
         }
-        
-        // Set feed name
-        feedName.text = article.feedName
-        
-        // Set author name
-        author.text = article.author != nil ? "by \(article.author!)" : ""
-        
-        // Set date of publication
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEE h:mm a"
-        time.text = formatter.string(from: article.pubDate! as Date)
         
     }
     

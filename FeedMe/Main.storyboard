@@ -144,24 +144,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dML-Bn-5zX">
-                                            <rect key="frame" x="231" y="112" width="47" height="12"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feed Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWv-Rb-c3C">
-                                            <rect key="frame" x="136" y="112" width="55" height="12"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9E-ka-TmA">
-                                            <rect key="frame" x="199" y="112" width="24" height="12"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZWK-2z-h2K">
                                             <rect key="frame" x="8" y="8" width="116" height="116"/>
                                             <constraints>
@@ -184,49 +166,28 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="EON-Ci-xam" firstAttribute="leading" secondItem="ZWK-2z-h2K" secondAttribute="trailing" constant="8" id="2JH-Xc-3wC"/>
-                                        <constraint firstItem="Q9E-ka-TmA" firstAttribute="top" secondItem="EON-Ci-xam" secondAttribute="bottom" constant="8" id="3xU-dV-gw1"/>
-                                        <constraint firstItem="Q9E-ka-TmA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EON-Ci-xam" secondAttribute="bottom" constant="2" id="6Gl-Oz-6ZJ"/>
                                         <constraint firstItem="EON-Ci-xam" firstAttribute="trailing" secondItem="2Ya-bZ-aIk" secondAttribute="trailingMargin" id="BlA-ro-Ibq"/>
-                                        <constraint firstItem="dML-Bn-5zX" firstAttribute="leading" secondItem="Q9E-ka-TmA" secondAttribute="trailing" constant="8" id="CjA-IE-mPm"/>
                                         <constraint firstItem="pj1-el-XoI" firstAttribute="trailing" secondItem="2Ya-bZ-aIk" secondAttribute="trailingMargin" id="GMk-IK-QsG"/>
-                                        <constraint firstItem="dML-Bn-5zX" firstAttribute="top" secondItem="EON-Ci-xam" secondAttribute="bottom" constant="8" id="GTv-Av-NUS"/>
-                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="dML-Bn-5zX" secondAttribute="trailing" constant="8" id="HeD-FA-wur"/>
                                         <constraint firstItem="ZWK-2z-h2K" firstAttribute="leading" secondItem="2Ya-bZ-aIk" secondAttribute="leadingMargin" id="Ivk-2Z-gOK"/>
                                         <constraint firstItem="pj1-el-XoI" firstAttribute="top" secondItem="2Ya-bZ-aIk" secondAttribute="topMargin" id="Kx0-U6-ulY"/>
-                                        <constraint firstItem="dWv-Rb-c3C" firstAttribute="top" secondItem="EON-Ci-xam" secondAttribute="bottom" constant="8" id="RJY-oO-4v7"/>
-                                        <constraint firstItem="Q9E-ka-TmA" firstAttribute="leading" secondItem="dWv-Rb-c3C" secondAttribute="trailing" constant="8" id="WjG-ae-Xld"/>
-                                        <constraint firstItem="dWv-Rb-c3C" firstAttribute="leading" secondItem="ZWK-2z-h2K" secondAttribute="trailing" constant="12" id="ZgT-RN-AGu"/>
                                         <constraint firstItem="ZWK-2z-h2K" firstAttribute="centerY" secondItem="2Ya-bZ-aIk" secondAttribute="centerY" id="aqp-r3-DWZ"/>
                                         <constraint firstItem="EON-Ci-xam" firstAttribute="top" secondItem="pj1-el-XoI" secondAttribute="bottom" constant="4" id="atG-AU-LXa"/>
-                                        <constraint firstItem="Q9E-ka-TmA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EON-Ci-xam" secondAttribute="bottom" constant="4" id="e93-NP-R8f"/>
-                                        <constraint firstItem="dWv-Rb-c3C" firstAttribute="bottom" secondItem="2Ya-bZ-aIk" secondAttribute="bottomMargin" id="iNs-on-pPj"/>
                                         <constraint firstItem="pj1-el-XoI" firstAttribute="top" secondItem="2Ya-bZ-aIk" secondAttribute="topMargin" id="lBy-Li-Mxk"/>
-                                        <constraint firstItem="Q9E-ka-TmA" firstAttribute="top" secondItem="EON-Ci-xam" secondAttribute="bottom" constant="4" id="rTr-hf-HIw"/>
                                         <constraint firstItem="pj1-el-XoI" firstAttribute="leading" secondItem="ZWK-2z-h2K" secondAttribute="trailing" constant="12" id="rh9-ag-Y89"/>
                                         <constraint firstItem="EON-Ci-xam" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pj1-el-XoI" secondAttribute="bottom" constant="8" id="vYq-Bu-jXA"/>
-                                        <constraint firstItem="Q9E-ka-TmA" firstAttribute="bottom" secondItem="2Ya-bZ-aIk" secondAttribute="bottomMargin" id="voi-Iz-ufe"/>
-                                        <constraint firstItem="dML-Bn-5zX" firstAttribute="bottom" secondItem="2Ya-bZ-aIk" secondAttribute="bottomMargin" id="yOe-r9-oQx"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="vYq-Bu-jXA"/>
                                             <exclude reference="lBy-Li-Mxk"/>
-                                            <exclude reference="RJY-oO-4v7"/>
-                                            <exclude reference="3xU-dV-gw1"/>
-                                            <exclude reference="e93-NP-R8f"/>
-                                            <exclude reference="rTr-hf-HIw"/>
-                                            <exclude reference="GTv-Av-NUS"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="author" destination="dML-Bn-5zX" id="Jtd-iD-0jp"/>
-                                    <outlet property="feedName" destination="dWv-Rb-c3C" id="0cj-ir-5hF"/>
                                     <outlet property="headline" destination="pj1-el-XoI" id="NrO-YD-ldD"/>
                                     <outlet property="leadingSpace" destination="Ivk-2Z-gOK" id="gHh-yR-SWA"/>
                                     <outlet property="picView" destination="ZWK-2z-h2K" id="faa-lz-7gk"/>
                                     <outlet property="preview" destination="EON-Ci-xam" id="3Cn-9Q-c02"/>
-                                    <outlet property="time" destination="Q9E-ka-TmA" id="gRS-iV-033"/>
                                     <outlet property="width" destination="RJY-6n-s2p" id="8e7-rU-AAC"/>
                                 </connections>
                             </tableViewCell>

@@ -26,7 +26,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     
     ]
     
-    //NewFeedDelegate Function
+    // NewFeedDelegate Function
     func didChange(to newFeedArray: [RSSFeed]) {
         feedArray = newFeedArray
         addressArray = feedArray.flatMap { $0.rawLink!.absoluteString }
@@ -40,7 +40,6 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set up view
         title = "FeedMe"
         
         // Intialize pull to refresh
