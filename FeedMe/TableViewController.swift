@@ -16,7 +16,11 @@ protocol NewFeedDelegate {
 class TableViewController: UITableViewController, SFSafariViewControllerDelegate, NewFeedDelegate {
     
     var itemArray = [RSSItem]()
-    var feedArray = [RSSFeed]()
+    var feedArray = [RSSFeed]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     // Starter sites
     var addressArray = [
@@ -85,8 +89,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
 
         itemArray.removeAll()
         feedArray.removeAll()
-        
-        var index = 0
+
         for address in addressArray {
             
             let request: URLRequest = URLRequest(url: URL(string: address)!)
@@ -100,15 +103,12 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
                     print("[TableViewController] loadFeeds Error:", error!.localizedDescription)
                 }
                 
-                index += 1
-                
-                // End refresh on last task completion
-                if index == self.addressArray.count - 1 {
-                    self.refreshControl?.endRefreshing()
-                }
-                
+                // End refresh on first task completion
+                self.refreshControl?.endRefreshing()
             }
-            
+        }
+        if addressArray.isEmpty {
+            self.refreshControl?.endRefreshing()
         }
         
     }
