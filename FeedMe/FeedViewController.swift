@@ -17,27 +17,20 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var feedArray = [RSSFeed]()
     
-    var delegate: NewFeedDelegate?
-
+    // TODO: Add delegate variable
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        newFeedTextField.delegate = self
+        // TODO: Set dataSource and delegate
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
-    // MARK: UITableView Data Source and Delegate Functions
+    
+    //
+    // MARK: Table View Functions
+    //
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return feedArray.count
@@ -57,72 +50,46 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    // MARK: Cell Editing Functions
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        // Create Delete option for UITableViewCell swipe
-        let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
-            self.feedArray.remove(at: indexPath.row)
-            self.delegate?.didChange(to: self.feedArray)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-        
-        delete.backgroundColor = .red
-        
-        return [delete]
-        
-    }
     
-    // MARK: Other Functions
+    //
+    // MARK: Storyboard Functions
+    //
+    
+    
+    // TODO: Implement unwindToFeedViewController!
+    
+    
+    
+    //
+    // MARK: NewFeedDelegate Functions
+    //
+    
+    
     
     /// Parse and save new URL as RSS Feed
     @IBAction func saveFeed() {
         
-        if let validURL = URL(string: newFeedTextField.text ?? "") {
-            
-            let request: URLRequest = URLRequest(url: validURL)
-            
-            RSSParser.parseFeedForRequest(request) { (feed, error) in
-                
-                // Save feed
-                if feed != nil {
-                    feed!.rawLink = validURL
-                    self.feedArray.append(feed!)
-                    self.delegate?.didChange(to: self.feedArray)
-                }
-                
-                // Show error message
-                else {
-                    let title = "Invalid Feed"
-                    let message = "Please enter a valid RSS feed URL!"
-                    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(action)
-                    self.present(alertController, animated: true, completion: nil)
-                }
-                
-                self.newFeedTextField.text = ""
-                self.tableView.reloadData()
-                
-            }
-            
-        }
+        // TODO: Implement saveFeed!
         
         view.endEditing(true)
+        
     }
+    
+    
+    
+    //
+    // MARK: Other Functions
+    //
+
+    
     
     func textFieldShouldReturn(_ newFeedTextField: UITextField) -> Bool {
         newFeedTextField.resignFirstResponder()
         saveFeed()
         return true
     }
-    
-    @IBAction func unwindToFeedView(_ sender: UIStoryboardSegue) { }
     
 }
 

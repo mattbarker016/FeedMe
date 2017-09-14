@@ -16,11 +16,17 @@ protocol NewFeedDelegate {
 class TableViewController: UITableViewController, SFSafariViewControllerDelegate, NewFeedDelegate {
     
     var itemArray = [RSSItem]()
-    var feedArray = [RSSFeed]()
+    
+    var feedArray = [RSSFeed]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     // Starter sites
     var addressArray = [
         
+        "http://machash.com/feed/",
         "http://rss.news.yahoo.com/rss/entertainment",
         "http://feeds.nytimes.com/nyt/rss/Technology",
     
@@ -28,13 +34,9 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     
     // NewFeedDelegate Function
     func didChange(to newFeedArray: [RSSFeed]) {
-        feedArray = newFeedArray
-        addressArray = feedArray.flatMap { $0.rawLink!.absoluteString }
-        loadFeeds()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+
+        // TODO: Implement didChange
+        
     }
     
     override func viewDidLoad() {
@@ -52,12 +54,15 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
         
     }
     
+    
+    //
+    // MARK: RSS Functions
+    //
+    
+    
+    /// Handle the refresh action
     func refresh(_ sender: UIRefreshControl) {
         loadFeeds()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     /// Helper function that returns UIImage if image exists. Returns nil if none
@@ -83,33 +88,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     /// Load feed from URL address
     func loadFeeds() {
 
-        itemArray.removeAll()
-        feedArray.removeAll()
-        
-        var index = 0
-        for address in addressArray {
-            
-            let request: URLRequest = URLRequest(url: URL(string: address)!)
-            
-            RSSParser.parseFeedForRequest(request) { (feed, error) in
-                
-                if error == nil {
-                    feed?.rawLink = URL(string: address)
-                    self.parse(feed)
-                } else {
-                    print("[TableViewController] loadFeeds Error:", error!.localizedDescription)
-                }
-                
-                index += 1
-                
-                // End refresh on last task completion
-                if index == self.addressArray.count - 1 {
-                    self.refreshControl?.endRefreshing()
-                }
-                
-            }
-            
-        }
+        // TODO: Implement loadFeeds!
         
     }
     
@@ -124,6 +103,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
                 
                 article.feedName = feed?.title
                 
+                // If there is an image associated with the article, load and add it to article
                 if !article.imagesFromItemDescription.isEmpty {
                     self.getImageData(from: article.imagesFromItemDescription.first) { (image) in
                         article.picture = image
@@ -137,6 +117,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
                 
             }
             
+            // Sort articles recent-first, and reload
             itemArray.sort { $0.pubDate!.compare($1.pubDate!) == .orderedDescending }
             tableView.reloadData()
             
@@ -147,33 +128,34 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
         }
         
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemArray.count
-    }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Article") as! TableViewCell
-        cell.setArticle(itemArray[indexPath.row])
-        return cell
-    }
     
-    /// Open link in SVC, fade article
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let link = itemArray[indexPath.row].link
-        let safariViewController = SFSafariViewController(url: link!, entersReaderIfAvailable: true)
-        present(safariViewController, animated: true, completion: nil)
-        tableView.cellForRow(at: indexPath)?.alpha = 0.4
-    }
+    
+    //
+    // MARK: Table View Functions
+    //
+    
+    
+    
+    // TODO: Implement Table View Functions!
+    // Hint: Xcode autocomplete is a glorious thing... try looking for `tableView` functions
+    
+    
+    
+    //
+    // MARK: Storyboard Functions
+    //
+    
+    
     
     /// Transfer feed data to feeds page
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "feedList" {
-            let destination = segue.destination as! FeedViewController
-            destination.delegate = self
-            destination.feedArray = feedArray
-        }
+
+        // TODO: Implement prepare!
+        
     }
+    
+    
     
 }
 

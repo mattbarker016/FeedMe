@@ -157,7 +157,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Article Preview..." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EON-Ci-xam">
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Article Preview..." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EON-Ci-xam">
                                             <rect key="frame" x="130" y="32" width="237" height="31"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -165,7 +165,7 @@
                                         </textView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="EON-Ci-xam" firstAttribute="leading" secondItem="ZWK-2z-h2K" secondAttribute="trailing" constant="8" id="2JH-Xc-3wC"/>
+                                        <constraint firstItem="EON-Ci-xam" firstAttribute="leading" secondItem="ZWK-2z-h2K" secondAttribute="trailing" constant="6" id="2JH-Xc-3wC"/>
                                         <constraint firstItem="EON-Ci-xam" firstAttribute="trailing" secondItem="2Ya-bZ-aIk" secondAttribute="trailingMargin" id="BlA-ro-Ibq"/>
                                         <constraint firstItem="pj1-el-XoI" firstAttribute="trailing" secondItem="2Ya-bZ-aIk" secondAttribute="trailingMargin" id="GMk-IK-QsG"/>
                                         <constraint firstItem="ZWK-2z-h2K" firstAttribute="leading" secondItem="2Ya-bZ-aIk" secondAttribute="leadingMargin" id="Ivk-2Z-gOK"/>
