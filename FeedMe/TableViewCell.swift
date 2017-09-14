@@ -18,7 +18,9 @@ class TableViewCell: UITableViewCell {
     func setArticle(_ article: RSSItem) {
         
         // TODO: Implement setArticle!
-        // Hint: You should utilize all the variables you added
+        // Hint: You should utilize all the variables you added. What needs to be set in each?
+        
+        // Challenge: Is there anyway to easily parse the HTML text?
         
     }
     

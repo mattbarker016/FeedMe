@@ -23,6 +23,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         
         // TODO: Set dataSource and delegate
+        // Hint: Look at the classes after `FeedViewController`.
         
     }
     
@@ -68,10 +69,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     
-    /// Parse and save new URL as RSS Feed
+    /// Parse and save new URL as a RSS Feed
     @IBAction func saveFeed() {
         
         // TODO: Implement saveFeed!
+        
+        // 1. Get the new URL from the `newFeedTextField`
+        
+        // 2. Get the RSSFeed object (like in loadFeeds() in TableViewController.swift)
+        
+        // 3. Reload / Reset the proper variables on-screen to load the new information
+        
+        // Challenge: What should you do the URL isn't valid or the feed object doesn't exist?
         
         view.endEditing(true)
         
@@ -84,7 +93,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     //
 
     
-    
+    /// Fires when the `Return` key of the keyboard is pressed.
     func textFieldShouldReturn(_ newFeedTextField: UITextField) -> Bool {
         newFeedTextField.resignFirstResponder()
         saveFeed()

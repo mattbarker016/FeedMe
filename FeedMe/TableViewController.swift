@@ -26,9 +26,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     // Starter sites
     var addressArray = [
         
-        "http://machash.com/feed/",
         "http://rss.news.yahoo.com/rss/entertainment",
-        "http://feeds.nytimes.com/nyt/rss/Technology",
     
     ]
     
@@ -36,6 +34,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     func didChange(to newFeedArray: [RSSFeed]) {
 
         // TODO: Implement didChange
+        // Hint: You need to update something on this file somehow...
         
     }
     
@@ -90,6 +89,14 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
 
         // TODO: Implement loadFeeds!
         
+        // 1. Clear any existing data
+        
+        // 2. Make a URLRequest FOR all addresses and use a `RSSParser` function to parseFeedForRequest
+        
+        // 3. Store the address of the feed within the feed.rawLink variable
+        
+        // 4. SAFELY parse the new feed, and stop refreshControl from refreshing
+        
     }
     
     /// Parse the RSSFeed to retrieve feed name, articles, images, etc.
@@ -140,6 +147,12 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     // TODO: Implement Table View Functions!
     // Hint: Xcode autocomplete is a glorious thing... try looking for `tableView` functions
     
+    // 1. How many ROWS in a section?
+    
+    // 2. What should the CELL at a ROW look like?
+    
+    // 3. What should happen when you SELECT a CELL?
+    
     
     
     //
@@ -152,6 +165,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         // TODO: Implement prepare!
+        // Hint: Set the important variables on the segue.destination view controller
         
     }
     
