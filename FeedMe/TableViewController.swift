@@ -20,7 +20,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     
     // Starter sites
     var addressArray = [
-        
+        "http://machash.com/feed/",
         "http://rss.news.yahoo.com/rss/entertainment",
         "http://feeds.nytimes.com/nyt/rss/Technology",
     
@@ -165,7 +165,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
         present(safariViewController, animated: true, completion: nil)
         tableView.cellForRow(at: indexPath)?.alpha = 0.4
     }
-    
+
     /// Transfer feed data to feeds page
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "feedList" {

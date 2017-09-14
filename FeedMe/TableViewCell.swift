@@ -31,10 +31,10 @@ class TableViewCell: UITableViewCell {
         preview.text = article.itemDescription!.htmlParse()
                 
         // Load article image; if it exists, display it (stored in RSSFeed class)
-        if article.picture == nil {
-            picView.image = article.picture
-        }
-        
+//        if article.picture == nil {
+//            picView.image = article.picture
+//        }
+
         // If image exists, set picture; otherwise, hide imageView
         if let picture = article.picture {
             leadingSpace.constant = 8
