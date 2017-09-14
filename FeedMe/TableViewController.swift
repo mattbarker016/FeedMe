@@ -107,9 +107,6 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
                 self.refreshControl?.endRefreshing()
             }
         }
-        if addressArray.isEmpty {
-            self.refreshControl?.endRefreshing()
-        }
         
     }
     
