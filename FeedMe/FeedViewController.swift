@@ -47,7 +47,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let feed = feedArray[indexPath.row]
         let safariViewController = SFSafariViewController(url: feed.link!)
-        present(safariViewController, animated: true, completion: nil)
+        present(safariViewController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

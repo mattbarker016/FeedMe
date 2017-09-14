@@ -99,7 +99,8 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
         
     }
     
-    /// Parse the RSSFeed to retrieve feed name, articles, images, etc.
+    /** Parse the RSSFeed to retrieve feed name, articles, and images associated with it.
+        This will populate the itemArray with articles (and sort them), as well as load any images. */
     func parse(_ feed: RSSFeed?) {
         
         if feed != nil {
@@ -150,9 +151,13 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     // 1. How many ROWS in a section?
     
     // 2. What should the CELL at a ROW look like?
+    //        a. create the cell
+    //        b. set the cell
     
     // 3. What should happen when you SELECT a CELL?
-    
+    //        a. access the article link
+    //        b. create an instance of Safari with the link
+    //        c. show the instance
     
     
     //
@@ -165,7 +170,7 @@ class TableViewController: UITableViewController, SFSafariViewControllerDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         // TODO: Implement prepare!
-        // Hint: Set the important variables on the segue.destination view controller
+        // Hint: Set the important variables on the segue.destination view controller IF the segue is correct
         
     }
     

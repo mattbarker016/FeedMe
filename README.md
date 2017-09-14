@@ -10,10 +10,8 @@ Big Red Hacks iOS Workshop App Example
 	- swipe back from edge of screen
 - add feeds via URL (default websites provided)
 - open main website page of feeds
-- delete feeds
-- articles marked as read via faded cell (see Known Issues)
 - automatically refreshes whenever significant changes are made
-	- pull to refresh included
+- pull to refresh included
 
 ## Little Touches
 - ImageView is hidden if parser doesn't find a usable picture
@@ -22,16 +20,9 @@ Big Red Hacks iOS Workshop App Example
 - custom stringParser to clean up parsed text (html, urls, tags, char. codes)
 - LaunchScreen included
 
-## Known Issues
-- unwanted graphics during refreshing
-- delete feed is buggy
-- refreshing will make all articles unread
-- layout complaints because of UIAlertController
-- depreciated function in Swift RSS Parser
-
 ## Beyond
 
-Please feel free to continue working with this example and submiting pull requests to add to this project!
+Please feel free to continue working with this example and submiting pull requests to add to this project! You can check out other branches on this project to see (attempts at) more advanced features.
 
 ## Credits
 
